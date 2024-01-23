@@ -1,0 +1,53 @@
+
+import Bio as Bio
+from Bio import SeqIO
+from Bio import AlignIO
+from Bio import Phylo
+
+t1 = SeqIO.read("methanosarcina1.fasta", "fasta")
+t2 = SeqIO.read("methanosarcina2.fasta", "fasta")
+t3 = SeqIO.read("methanosarcina3.fasta", "fasta")
+t4 = SeqIO.read("methanosarcina4.fasta", "fasta")
+t5 = SeqIO.read("methanosarcina5.fasta", "fasta")
+
+t1.id = 'M.horobensis'
+t2.id = 'M.subterranea'
+t3.id = 'M.lacustris'
+t4.id = 'M.baltica'
+t5.id = 'M.barkeri'
+
+methanosarcinas = SeqIO.write([t1,t2,t3,t4,t5], "methanosarcinas23.fasta", "fasta")
+
+with open("metha.aln","r") as aln: 
+    alignment = AlignIO.read(aln,"clustal")
+print(type(alignment))
+
+from Bio.Phylo.TreeConstruction import DistanceCalculator 
+calculator = DistanceCalculator('identity')
+
+distance_matrix = calculator.get_distance(alignment)
+print(distance_matrix)
+
+from Bio.Phylo.TreeConstruction import DistanceTreeConstructor
+constructor = DistanceTreeConstructor(calculator)
+
+methanoss_tree = constructor.build_tree(alignment)
+methanoss_tree.rooted = True
+print(methanoss_tree)
+
+Phylo.write(methanoss_tree, "methanoss_tree.xml", "phyloxml")
+
+import matplotlib
+import matplotlib.pyplot as plt
+fig = Phylo.draw(methanoss_tree)
+
+fig = plt.figure(figsize=(13, 5), dpi=100) 
+matplotlib.rc('font', size=12)              
+matplotlib.rc('xtick', labelsize=10)      
+matplotlib.rc('ytick', labelsize=10)       
+#turtle_tree.ladderize()
+axes = fig.add_subplot(1, 1, 1)
+Phylo.draw(methanoss_tree, axes=axes)
+fig.savefig("methanos27_cladogram")
+
+
