@@ -1,0 +1,36 @@
+<phyloxml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phyloxml.org" xsi:schemaLocation="http://www.phyloxml.org http://www.phyloxml.org/1.10/phyloxml.xsd">
+  <phylogeny rooted="true">
+    <clade>
+      <name>Inner3</name>
+      <branch_length>0</branch_length>
+      <clade>
+        <name>Inner2</name>
+        <branch_length>0.011133603238866419</branch_length>
+        <clade>
+          <name>Inner1</name>
+          <branch_length>0.01315789473684209</branch_length>
+          <clade>
+            <name>M.baltica</name>
+            <branch_length>0.09559154295996398</branch_length>
+          </clade>
+          <clade>
+            <name>M.lacustris</name>
+            <branch_length>0.03531264057579851</branch_length>
+          </clade>
+        </clade>
+        <clade>
+          <name>M.barkeri</name>
+          <branch_length>0.04284750337381915</branch_length>
+        </clade>
+      </clade>
+      <clade>
+        <name>M.horobensis</name>
+        <branch_length>0.027665317139001305</branch_length>
+      </clade>
+      <clade>
+        <name>M.subterranea</name>
+        <branch_length>0.03711201079622131</branch_length>
+      </clade>
+    </clade>
+  </phylogeny>
+</phyloxml>
